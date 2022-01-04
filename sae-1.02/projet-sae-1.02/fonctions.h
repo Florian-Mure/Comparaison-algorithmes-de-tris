@@ -22,6 +22,9 @@ std::vector<int> initTabPresqueTriFin(size_t N);
 //!\brief Crée un tableau presque trié entre le début et la fin
 std::vector<int> initTabPresqueTriDebFin(size_t N);
 
+//!\brief Declaration du type des fonctions d'initialisation de tableau dans la variable GenerateTab
+using tabInit = decltype(initTabAleat)*;
+
 //!\brief Vérifie qu'un tableau est correctement trié
 void verifTri(const std::vector<int>& tab, const std::string& algoName = {});
 
