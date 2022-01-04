@@ -3,7 +3,9 @@
 #endif // Win 32
 
 #include <iostream>
+#include <string>
 #include "fonctions.h"
+#include "fonction-tri.h"
 
 int main()
 {
@@ -11,10 +13,23 @@ int main()
     SetConsoleCP(CP_UTF8);
     SetConsoleOutputCP(CP_UTF8);
 #endif // WIN 32
+  
+      std::vector<tabInit> tabFonctionInitialisation;
+    tabFonctionInitialisation.push_back(initTabAleat);
+    tabFonctionInitialisation.push_back(initTabPresqueTri);
+    tabFonctionInitialisation.push_back(initTabPresqueTriDeb);
+    tabFonctionInitialisation.push_back(initTabPresqueTriFin);
+    tabFonctionInitialisation.push_back(initTabPresqueTriDebFin);
 
+    std::vector<tabTri> tabFonctionTri;
+    tabFonctionTri.push_back(triSelection);
+    tabFonctionTri.push_back(triBulles);
+    tabFonctionTri.push_back(triBullesOpti);
+    tabFonctionTri.push_back(triPeigne);
+tabFonctionTri.push_back(triRapide);
 
-    // Implémentation de la fonction de tri par sélection (TPS) [tri par sélection = tri par comparaison]
-        // Utilisation du pseudo code de wikipédia
+// ImplÃ©mentation de la fonction de tri par sÃ©lection (TPS) [tri par sÃ©lection = tri par comparaison]
+        // Utilisation du pseudo code de wikipÃ©dia
 
     auto tabTPS = initTabAleat(10);
     for (size_t i = 0; i < (tabTPS.size()) - 2; i++)
@@ -30,12 +45,12 @@ int main()
         }
     }
     
-    // Implémentation de la fonction de tri à bulles (TAB)
-        // Utilisation du pseudo code de wikipédia
+    // ImplÃ©mentation de la fonction de tri Ã  bulles (TAB)
+        // Utilisation du pseudo code de wikipedia
 
     auto tabTAB = initTabAleat(10);
-    // La boucle se fait sur la valeur maximale de i étant la taille du tableau jusqu'à la valeur 1
-    // Car le tri place la plus grande valeur en "passant" les valeurs, à la fin du tableau de valeurs
+    // La boucle se fait sur la valeur maximale de i etant la taille du tableau jusqu'a la valeur 1
+    // Car le tri place la plus grande valeur en "passant" les valeurs, a la fin du tableau de valeurs
     for (size_t i = (tabTAB.size()) - 1; i >= 1; i--)
     {
         for (size_t j = 0; j < i-1; j++)
@@ -45,8 +60,8 @@ int main()
         }
     }
 
-    // Implémentation de la fonction de tri à bulles (TAB) optimisé
-        // Utilisation du pseudo code de wikipédia
+    // Implï¿½mentation de la fonction de tri a bulles (TAB) optimise
+        // Utilisation du pseudo code de wikipï¿½dia
 
     auto tabTABOptimise = initTabAleat(10);
     for (size_t i = (tabTAB.size()) - 1; i >= 1; i--)
@@ -59,15 +74,15 @@ int main()
                 tableauTrie = false;
             }
         }
-        // Ici, on vérifie si la fonction, en "passant" les valeurs, a procédé à un échange de valeurs.
-        // S'il n'a pas échangé de valeurs, cela veut dire que le tableau est déjà trié
-        // Donc on arrête le processus
+        // Ici, on verifie si la fonction, en "passant" les valeurs, a procï¿½dï¿½ ï¿½ un ï¿½change de valeurs.
+        // S'il n'a pas ï¿½changï¿½ de valeurs, cela veut dire que le tableau est dï¿½jï¿½ triï¿½
+        // Donc on arrï¿½te le processus
         if (tableauTrie)
             break;
     }
 
-    // Implémentation de la fonction de tri à peigne (TAP)
-        // Utilisation du pseudo code de Wikipédia
+    // Implï¿½mentation de la fonction de tri ï¿½ peigne (TAP)
+        // Utilisation du pseudo code de Wikipï¿½dia
 
     auto tabTAP = initTabAleat(10);
     int intervalle = tabTAP.size();
@@ -85,6 +100,7 @@ int main()
                 }
             }
     }
+
 
     return 0;
 }
