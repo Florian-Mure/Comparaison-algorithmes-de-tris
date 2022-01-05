@@ -35,7 +35,15 @@ int main()
     tabFonctionTri.push_back({ triBulles, "triBulles" });
     tabFonctionTri.push_back({ triBullesOpti, "triBullesOpti" });
     tabFonctionTri.push_back({ triPeigne, "triPeigne"});
-    tabFonctionTri.push_back({ triRapide, "triRapide" });
+    tabFonctionTri.push_back({ triRapidePivotAleatoire, "triRapidePivotAleatoire" });
+    tabFonctionTri.push_back({ triRapidePivotArbitraire, "triRapidePivotArbitraire" });
+    tabFonctionTri.push_back({ triInsertion, "triInsertion" });
+    tabFonctionTri.push_back({ triCoktail, "triCoktail" });
+    tabFonctionTri.push_back({ triCoktailOpti, "triCoktailOpti" });
+    tabFonctionTri.push_back({ triShell, "triShell" });
+    //tabFonctionTri.push_back({ triTas, "triTas" });
+    tabFonctionTri.push_back({ triPairImpair, "triPairImpair" });
+    tabFonctionTri.push_back({ triFaireValoir, "triFaireValoir" });
 
 
     // Ouverture du fichier outputCSV
@@ -56,7 +64,7 @@ int main()
     out << "\n";
 
     // Affichage pour chaque tri, pour chaque initialisation de tableau en fonction de la taille n le nombre de comparaison
-    for (size_t n = 25; n < 1501; n++) {
+    for (size_t n = 10; n < 151; n++) {
         out << n << ";";
         for (auto tri : tabFonctionTri) {
             std::cout << "- Fonction de tri : \x1B[1;31m" << tri.second << "\x1B[0m\n";
