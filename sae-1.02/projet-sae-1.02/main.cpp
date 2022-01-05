@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <string>
+#include <fstream>
 #include "fonctions.h"
 #include "fonction-tri.h"
 
@@ -16,7 +17,7 @@ int main()
 
     std::srand(std::time(0));
   
-    //Creation d'un tableau de fonction d'initialisation de suites de chiffres a trier
+    // Creation d'un tableau de fonction d'initialisation de suites de chiffres a trier
     std::vector<std::pair<tabInit, std::string>> tabFonctionInitialisation;
     tabFonctionInitialisation.push_back({ initTabAleat, "initTabAleat"});
     tabFonctionInitialisation.push_back({ initTabPresqueTri, "initTabPresqueTri"});
@@ -24,7 +25,7 @@ int main()
     tabFonctionInitialisation.push_back({ initTabPresqueTriFin, "initTabPresqueTriFin"});
     tabFonctionInitialisation.push_back({ initTabPresqueTriDebFin, "initTabPresqueTriDebFin"});
 
-    //Creation d'un tableau de fonction de tri de suites de chiffres
+    // Creation d'un tableau de fonction de tri de suites de chiffres
     std::vector<std::pair<tabTri, std::string>> tabFonctionTri;
     tabFonctionTri.push_back({ triSelection, "triSelection"});
     tabFonctionTri.push_back({ triBulles, "triBulles" });
@@ -32,16 +33,36 @@ int main()
     tabFonctionTri.push_back({ triPeigne, "triPeigne"});
     //tabFonctionTri.push_back({ triRapide, "triRapide" });
 
-    // Affichage pour chaque tri, pour chaque initialisation de tableau en fonction de la taille n le nombre de comparaison
+    // Ouverture du fichier outputCSV
+    std::ofstream out("outputCSV.csv");
+    if (!out.is_open())
+        std::cerr << "Problème d'ouverture du fichier \"outputCSV.csv\".\n";
+
+    // Ajout de l'entete dans le fichier de sortie csv
+    out << "N;";
     for (auto tri : tabFonctionTri) {
-        std::cout << "- Fonction de tri : \x1B[1;31m" << tri.second << "\x1B[0m\n";
-        for (auto init : tabFonctionInitialisation) {
-            std::cout << "Fonction d'initialisation : \x1B[1;32m" << init.second << "\x1B[0m\n";
-            for (size_t n = 8; n < 15; n++) {
+        out << "Aleat " << tri.second
+            << ";PresqueTri " << tri.second
+            << ";PresqueTriDeb " << tri.second
+            << ";PresqueTriDebFin " << tri.second
+            << ";PresqueTriFin " << tri.second << ";";
+    }
+    out << "\n";
+
+    // Affichage pour chaque tri, pour chaque initialisation de tableau en fonction de la taille n le nombre de comparaison
+    for (size_t n = 8; n < 15; n++) {
+        out << n << ";";
+        for (auto tri : tabFonctionTri) {
+            std::cout << "- Fonction de tri : \x1B[1;31m" << tri.second << "\x1B[0m\n";
+            for (auto init : tabFonctionInitialisation) {
+                out << tri.first(init.first, n).second << ";";
+                std::cout << "Fonction d'initialisation : \x1B[1;32m" << init.second << "\x1B[0m\n";
                 std::cout << "Tableau de taille \x1B[1;33m" << n << "\x1B[0m, nombre de comparaison est de \x1B[1;34m" << tri.first(init.first, n).second << "\x1B[0m\n";
             }
         }
+        out << "\n";
     }
+
 
     return 0;
 }
