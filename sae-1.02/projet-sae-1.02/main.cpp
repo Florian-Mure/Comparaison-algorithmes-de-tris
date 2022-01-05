@@ -4,9 +4,48 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 #include <fstream>
 #include "fonctions.h"
 #include "fonction-tri.h"
+#include <forward_list>
+#include <algorithm>
+
+
+// Fonctions pour le tri Rapide
+
+// Partitionne le tableau entrÃ© en paramÃ¨tres avec les valeurs minimum et maximum du tableau
+int partitionner(std::vector<int> tabTR, int premier, int dernier)
+{
+    int pivot = tabTR[dernier];    // pivot
+    int i = (premier - 1);  // On rÃ©cupÃ¨re la plus petite valeur en index
+
+    for (int j = premier; j <= dernier - 1; j++)
+    {
+        // Si l'Ã©lÃ©ment passÃ© est plus petit ou Ã©gal Ã  notre pivot,
+        if (tabTR[j] <= pivot)
+        {
+            i++;
+            std::swap(tabTR[i], tabTR[j]); // On swap les valeurs
+        }
+    }
+    std::swap(tabTR[i + 1], tabTR[dernier]);
+    return (i + 1);
+}
+
+// Tri rapide via rÃ©cursivitÃ©
+void tri_rapide(std::vector<int> tabTR, int premier, int dernier)
+{
+    if (premier < dernier)
+    {
+        int part = partitionner(tabTR, premier, dernier);
+
+        // Tri des Ã©lÃ©ments avant et aprÃ¨s la partition
+        tri_rapide(tabTR, premier, part - 1);
+        tri_rapide(tabTR, premier + 1, dernier);
+    }
+}
+
 
 int main()
 {
@@ -33,10 +72,11 @@ int main()
     tabFonctionTri.push_back({ triPeigne, "triPeigne"});
     //tabFonctionTri.push_back({ triRapide, "triRapide" });
 
+
     // Ouverture du fichier outputCSV
     std::ofstream out("outputCSV.csv");
     if (!out.is_open())
-        std::cerr << "Probl�me d'ouverture du fichier \"outputCSV.csv\".\n";
+        std::cerr << "Problème d'ouverture du fichier \"outputCSV.csv\".\n";
 
     // Ajout de l'entete dans le fichier de sortie csv
     out << "N;";
@@ -46,8 +86,10 @@ int main()
             << ";PresqueTriDeb " << tri.second
             << ";PresqueTriDebFin " << tri.second
             << ";PresqueTriFin " << tri.second << ";";
+
     }
     out << "\n";
+
 
     // Affichage pour chaque tri, pour chaque initialisation de tableau en fonction de la taille n le nombre de comparaison
     for (size_t n = 8; n < 15; n++) {
@@ -61,8 +103,15 @@ int main()
             }
         }
         out << "\n";
+
     }
 
+    // ImplÃ©mentation du tri rapide (TR)
+        // Utilisation du pseudo code de WikipÃ©dia
+
+    auto tabTR = initTabAleat(10);
+    int n = tabTR.size();
+    tri_rapide(tabTR, 0, n - 1);
 
     return 0;
 }

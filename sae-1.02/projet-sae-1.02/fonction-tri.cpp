@@ -1,7 +1,7 @@
 #include "fonction-tri.h"
 
-// Implémentation de la fonction de tri par sélection (TPS) [tri par sélection = tri par comparaison]
-        // Utilisation du pseudo code de wikipédia
+// ImplÃ©mentation de la fonction de tri par sÃ©lection (TPS) [tri par sÃ©lection = tri par comparaison]
+        // Utilisation du pseudo code de wikipÃ©dia
 std::pair<std::vector<int>, unsigned int> triSelection(tabInit fonction, size_t n)
 {
     auto tabTPS = fonction(n);
@@ -24,7 +24,7 @@ std::pair<std::vector<int>, unsigned int> triSelection(tabInit fonction, size_t 
     return { tabTPS, nbComparaison };
 }
 
-// Implémentation de la fonction de tri à bulles (TAB)
+// ImplÃ©mentation de la fonction de tri Ã  bulles (TAB)
     // Utilisation du pseudo code de wikipedia
 std::pair<std::vector<int>, unsigned int> triBulles(tabInit fonction, size_t n)
 {
@@ -98,7 +98,6 @@ std::pair<std::vector<int>, unsigned int> triPeigne(tabInit fonction, size_t n)
 
     return { tabTAP, nbComparaison };
 }
-
 //std::pair<std::vector<int>, unsigned int> triRapide(std::vector<int>)
 //{
 //
