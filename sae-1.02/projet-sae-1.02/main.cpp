@@ -12,41 +12,6 @@
 #include <algorithm>
 
 
-// Fonctions pour le tri Rapide
-
-// Partitionne le tableau entrÃ© en paramÃ¨tres avec les valeurs minimum et maximum du tableau
-int partitionner(std::vector<int> tabTR, int premier, int dernier)
-{
-    int pivot = tabTR[dernier];    // pivot
-    int i = (premier - 1);  // On rÃ©cupÃ¨re la plus petite valeur en index
-
-    for (int j = premier; j <= dernier - 1; j++)
-    {
-        // Si l'Ã©lÃ©ment passÃ© est plus petit ou Ã©gal Ã  notre pivot,
-        if (tabTR[j] <= pivot)
-        {
-            i++;
-            std::swap(tabTR[i], tabTR[j]); // On swap les valeurs
-        }
-    }
-    std::swap(tabTR[i + 1], tabTR[dernier]);
-    return (i + 1);
-}
-
-// Tri rapide via rÃ©cursivitÃ©
-void tri_rapide(std::vector<int> tabTR, int premier, int dernier)
-{
-    if (premier < dernier)
-    {
-        int part = partitionner(tabTR, premier, dernier);
-
-        // Tri des Ã©lÃ©ments avant et aprÃ¨s la partition
-        tri_rapide(tabTR, premier, part - 1);
-        tri_rapide(tabTR, premier + 1, dernier);
-    }
-}
-
-
 int main()
 {
 #ifdef _WIN32
@@ -70,7 +35,7 @@ int main()
     tabFonctionTri.push_back({ triBulles, "triBulles" });
     tabFonctionTri.push_back({ triBullesOpti, "triBullesOpti" });
     tabFonctionTri.push_back({ triPeigne, "triPeigne"});
-    //tabFonctionTri.push_back({ triRapide, "triRapide" });
+    tabFonctionTri.push_back({ triRapide, "triRapide" });
 
 
     // Ouverture du fichier outputCSV
@@ -85,33 +50,27 @@ int main()
             << ";PresqueTri " << tri.second
             << ";PresqueTriDeb " << tri.second
             << ";PresqueTriDebFin " << tri.second
-            << ";PresqueTriFin " << tri.second << ";";
+            << ";PresqueTriFin " << tri.second << ";;;";
 
     }
     out << "\n";
 
-
     // Affichage pour chaque tri, pour chaque initialisation de tableau en fonction de la taille n le nombre de comparaison
-    for (size_t n = 8; n < 15; n++) {
+    for (size_t n = 25; n < 1501; n++) {
         out << n << ";";
         for (auto tri : tabFonctionTri) {
             std::cout << "- Fonction de tri : \x1B[1;31m" << tri.second << "\x1B[0m\n";
             for (auto init : tabFonctionInitialisation) {
-                out << tri.first(init.first, n).second << ";";
+                std::vector<int> tabToTRI = init.first(n);
+                auto nbComparaison = tri.first(tabToTRI);
+                out << nbComparaison << ";";
                 std::cout << "Fonction d'initialisation : \x1B[1;32m" << init.second << "\x1B[0m\n";
-                std::cout << "Tableau de taille \x1B[1;33m" << n << "\x1B[0m, nombre de comparaison est de \x1B[1;34m" << tri.first(init.first, n).second << "\x1B[0m\n";
+                std::cout << "Tableau de taille \x1B[1;33m" << n << "\x1B[0m, nombre de comparaison est de \x1B[1;34m" << nbComparaison << "\x1B[0m\n";
             }
+            out << ";;";
         }
         out << "\n";
-
     }
-
-    // ImplÃ©mentation du tri rapide (TR)
-        // Utilisation du pseudo code de WikipÃ©dia
-
-    auto tabTR = initTabAleat(10);
-    int n = tabTR.size();
-    tri_rapide(tabTR, 0, n - 1);
 
     return 0;
 }

@@ -5,19 +5,22 @@
 #include "fonctions.h"
 
 //!\brief Fonction d'implémentation du tri par sélection
-std::pair<std::vector<int>, unsigned int> triSelection(tabInit, size_t);
+unsigned int triSelection(std::vector<int>&);
 
 //!\brief Fonction d'implementation du tri à bulles
-std::pair<std::vector<int>, unsigned int> triBulles(tabInit, size_t);
+unsigned int triBulles(std::vector<int>&);
 
 //!\brief Fonction d'implémentation du tri à bulle optimisée
-std::pair<std::vector<int>, unsigned int> triBullesOpti(tabInit, size_t);
+unsigned int triBullesOpti(std::vector<int>&);
 
 //!\brief Fonction d'implémentation du tri à peigne
-std::pair<std::vector<int>, unsigned int> triPeigne(tabInit, size_t);
+unsigned int triPeigne(std::vector<int>&);
 
 ////!\brief Fonction d'implémentation du tri rapide
-//std::pair<std::vector<int>, unsigned int> triRapide(tabInit, size_t);
+unsigned int triRapide(std::vector<int>&);
+void triRapide_bis(std::vector<int>&, int, int, unsigned int&);
+unsigned int partitionner(std::vector<int>&, int, int, int, unsigned int&);
+int choixPivot(int, int);
 
 //!\brief Declaration du type des fonctions d'initialisation de tableau dans la variable GenerateTab
 using tabTri = decltype(triSelection)*;
