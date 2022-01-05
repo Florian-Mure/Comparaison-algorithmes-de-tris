@@ -2,21 +2,22 @@
 
 #include <vector>
 #include <utility>
+#include "fonctions.h"
 
 //!\brief Fonction d'implémentation du tri par sélection
-std::pair<std::vector<int>, unsigned int> triSelection(std::vector<int>);
+std::pair<std::vector<int>, unsigned int> triSelection(tabInit, size_t);
 
 //!\brief Fonction d'implementation du tri à bulles
-std::pair<std::vector<int>, unsigned int> triBulles(std::vector<int>);
+std::pair<std::vector<int>, unsigned int> triBulles(tabInit, size_t);
 
 //!\brief Fonction d'implémentation du tri à bulle optimisée
-std::pair<std::vector<int>, unsigned int> triBullesOpti(std::vector<int>);
+std::pair<std::vector<int>, unsigned int> triBullesOpti(tabInit, size_t);
 
 //!\brief Fonction d'implémentation du tri à peigne
-std::pair<std::vector<int>, unsigned int> triPeigne(std::vector<int>);
+std::pair<std::vector<int>, unsigned int> triPeigne(tabInit, size_t);
 
-//!\brief Fonction d'implémentation du tri rapide
-std::pair<std::vector<int>, unsigned int> triRapide(std::vector<int>);
+////!\brief Fonction d'implémentation du tri rapide
+//std::pair<std::vector<int>, unsigned int> triRapide(tabInit, size_t);
 
 //!\brief Declaration du type des fonctions d'initialisation de tableau dans la variable GenerateTab
 using tabTri = decltype(triSelection)*;
