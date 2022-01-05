@@ -22,5 +22,6 @@ std::pair<std::vector<int>, unsigned int> triPeigne(std::vector<int>)
 
 std::pair<std::vector<int>, unsigned int> triRapide(std::vector<int>)
 {
-
+    
 }
+
