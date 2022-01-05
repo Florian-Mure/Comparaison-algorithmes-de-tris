@@ -1,3 +1,9 @@
-﻿  main.cpp
-C:\Users\muref\Documents\Annee_2021-2022\Semestre 1\SAE_1.02-Comparaison-approches-algorithmiques\sae-1.02\projet-sae-1.02\main.cpp(22,25): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
+﻿  fonction-tri.cpp
+C:\Users\muref\Documents\Annee_2021-2022\Semestre 1\SAE_1.02-Comparaison-approches-algorithmiques\sae-1.02\projet-sae-1.02\fonction-tri.cpp(80,26): warning C4244: '/=' : conversion de 'double' en 'int', perte possible de données
+C:\Users\muref\Documents\Annee_2021-2022\Semestre 1\SAE_1.02-Comparaison-approches-algorithmiques\sae-1.02\projet-sae-1.02\fonction-tri.cpp(106,32): warning C4018: '<=' : incompatibilité signed/unsigned
+C:\Users\muref\Documents\Annee_2021-2022\Semestre 1\SAE_1.02-Comparaison-approches-algorithmiques\sae-1.02\projet-sae-1.02\fonction-tri.cpp(243,34): warning C4018: '<=' : incompatibilité signed/unsigned
+C:\Users\muref\Documents\Annee_2021-2022\Semestre 1\SAE_1.02-Comparaison-approches-algorithmiques\sae-1.02\projet-sae-1.02\fonction-tri.cpp(254,32): warning C4018: '>' : incompatibilité signed/unsigned
+C:\Users\muref\Documents\Annee_2021-2022\Semestre 1\SAE_1.02-Comparaison-approches-algorithmiques\sae-1.02\projet-sae-1.02\fonction-tri.cpp(279,30): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\muref\Documents\Annee_2021-2022\Semestre 1\SAE_1.02-Comparaison-approches-algorithmiques\sae-1.02\projet-sae-1.02\fonction-tri.cpp(320,14): warning C4018: '<=' : incompatibilité signed/unsigned
+C:\Users\muref\Documents\Annee_2021-2022\Semestre 1\SAE_1.02-Comparaison-approches-algorithmiques\sae-1.02\projet-sae-1.02\fonction-tri.cpp(323,15): warning C4018: '<' : incompatibilité signed/unsigned
   projet-sae-1.02.vcxproj -> C:\Users\muref\Documents\Annee_2021-2022\Semestre 1\SAE_1.02-Comparaison-approches-algorithmiques\sae-1.02\Debug\projet-sae-1.02.exe
